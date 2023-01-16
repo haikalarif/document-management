@@ -51,20 +51,21 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat datang, {{Auth::user()->name}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat datang,
+                    {{ Auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('temp') }}/img/undraw_profile.svg">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/clients">
                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                     Client
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/products">
                     <i class="fa-brands fa-dropbox fa-sm fa-fw mr-2 text-gray-400"></i>
                     Product
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/projects">
                     <i class="fa-solid fa-chart-pie fa-sm fa-fw mr-2 text-gray-400"></i>
                     Project
                 </a>
@@ -94,7 +95,7 @@
             <div class="modal-body">Apakah yakin ingin logout? 😥</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href={{route('actionlogout')}}>Logout</a>
+                <a class="btn btn-primary" href={{ route('actionlogout') }}>Logout</a>
             </div>
         </div>
     </div>

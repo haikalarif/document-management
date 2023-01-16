@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-home"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,15 +28,15 @@
     </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ Request::is('documents') ? 'active' : '' }}">
+        <a class="nav-link" href="/documnets">
             <i class="fas fa-fw fa-file"></i>
             <span>Document</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ Request::is('projects') ? 'active' : '' }}">
+        <a class="nav-link" href="/projects">
             <i class="fa-solid fa-chart-pie"></i>
             <span>Project</span></a>
     </li>
@@ -50,15 +50,15 @@
     </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ Request::is('products') ? 'active' : '' }}">
+        <a class="nav-link" href="/products">
             <i class="fa-brands fa-dropbox"></i>
             <span>Product</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ Request::is('clients') ? 'active' : '' }}">
+        <a class="nav-link" href="/clients">
             <i class="fas fa-fw fa-users"></i>
             <span>Client</span></a>
     </li>

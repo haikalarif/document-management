@@ -14,7 +14,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $client = Client::all();
+        
+        return view('client.index', [
+            'client' => $client
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.tambah');
     }
 
     /**
@@ -35,7 +39,15 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'alamat' => 'required',
+            'kontak' => 'required|max:255'
+        ]);
+
+        Client::create($validatedData);
+
+        return redirect('/clients')->with('success','Data Client Berhasil Ditambahkan!');
     }
 
     /**
@@ -46,7 +58,9 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view('client.detail', [
+            'client' => $client
+        ]);
     }
 
     /**
@@ -57,7 +71,9 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('client.edit', [
+            'client' => $client
+        ]);
     }
 
     /**
@@ -69,7 +85,18 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $rules = [
+            'nama' => 'required|max:255',
+            'alamat' => 'required',
+            'kontak' => ''
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Client::where('id', $client->id)
+            ->update($validatedData);
+
+        return redirect('/clients')->with('success','Data Telah Berhasil Di Update!!');
     }
 
     /**
@@ -80,6 +107,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        Client::destroy($client->id);
+        return redirect('/clients')->with('success','Data Telah Berhasil Di Hapus!!');
     }
 }
