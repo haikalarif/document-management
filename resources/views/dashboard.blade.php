@@ -18,7 +18,7 @@
                         <div class="col mr-2">
                             <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
                                 Client</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_client->count() }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -35,7 +35,7 @@
                         <div class="col mr-2">
                             <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
                                 Product</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_product->count() }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-brands fa-dropbox fa-2x text-gray-300"></i>
