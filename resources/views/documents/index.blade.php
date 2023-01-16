@@ -22,7 +22,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data List Document</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data List Documents</h6>
         </div>
         <div class="card-body">
             <div class="d-flex mb-3">
@@ -30,7 +30,7 @@
                     <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </span>
-                    <span class="text">Tambah Dokumen</span>
+                    <span class="text">Tambah Document</span>
                 </a>
             </div>
             <div class="table-responsive">
@@ -38,7 +38,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>nama</th>
+                            <th>Nama</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
