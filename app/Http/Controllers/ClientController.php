@@ -121,6 +121,10 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+        if($client->image) {
+            Storage::delete($client->image);
+        }
+
         Client::destroy($client->id);
         return redirect('/clients')->with('success','Data Telah Berhasil Di Hapus!!');
     }
