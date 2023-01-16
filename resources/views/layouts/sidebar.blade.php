@@ -29,7 +29,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('documents') ? 'active' : '' }}">
-        <a class="nav-link" href="/documnets">
+        <a class="nav-link" href="/documents">
             <i class="fas fa-fw fa-file"></i>
             <span>Document</span></a>
     </li>
