@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -42,8 +43,13 @@ class ClientController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'alamat' => 'required',
-            'kontak' => 'required|max:255'
+            'kontak' => 'required|max:255',
+            'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('image');
+        }
 
         Client::create($validatedData);
 
@@ -88,10 +94,18 @@ class ClientController extends Controller
         $rules = [
             'nama' => 'required|max:255',
             'alamat' => 'required',
-            'kontak' => ''
+            'kontak' => '',
+            'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ];
 
         $validatedData = $request->validate($rules);
+
+        if($request->file('image')){
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('images');
+        }
 
         Client::where('id', $client->id)
             ->update($validatedData);
