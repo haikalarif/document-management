@@ -5,7 +5,7 @@
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Product</h1>
+        <h1 class="h3 mb-0 text-gray-800">Products</h1>
     </div>
 
     @if (session()->has('success'))
@@ -22,7 +22,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data List Produk</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data List Products</h6>
         </div>
         <div class="card-body">
             <div class="d-flex mb-3">
@@ -30,7 +30,7 @@
                     <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </span>
-                    <span class="text">Tambah Produk</span>
+                    <span class="text">Tambah Product</span>
                 </a>
             </div>
             <div class="table-responsive">
@@ -38,7 +38,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>nama</th>
+                            <th>Nama</th>
                             <th>Kategori</th>
                             <th>Actions</th>
                         </tr>
