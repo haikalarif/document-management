@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('kontak');
-            $table->foreignId('id_project');
             $table->timestamps();
         });
     }
