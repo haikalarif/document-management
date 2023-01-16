@@ -27,8 +27,12 @@
         <div class="card-body">
             <div class="container">
                 <div class="row d-flex justify-content-between">
-                    <div class="col-sm-3 rounded-left py-3">
-                        <img src="{{ asset('temp') }}/img/undraw_profile.svg">
+                    <div class="col-sm-3 rounded-left py-3 overflow-hidden">
+                        @if ($client->image)
+                            <img style="width: 180px; height: 180px" src="{{ asset('storage/' . $client->image) }}">
+                        @else
+                            <img style="width: 180px; height: 180px" src="{{ asset('temp') }}/img/undraw_profile.svg">
+                        @endif
                     </div>
                     <div class="col-sm-8 rounded-right">
                         <div class="row">

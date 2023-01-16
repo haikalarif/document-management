@@ -53,7 +53,8 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat datang,
                     {{ Auth::user()->name }}</span>
-                <img class="img-profile rounded-circle" src="{{ asset('temp') }}/img/undraw_profile.svg">
+                <img class="img-profile rounded-circle"
+                    src={{ Auth::user()->image == '' ? '/temp/img/undraw_profile.svg' : Auth::user()->image }}>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

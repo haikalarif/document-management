@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form action="/clients/{{ $client->id }}" method="POST">
+        <form action="/clients/{{ $client->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="from-group mb-3">
@@ -43,9 +43,25 @@
                 @enderror
             </div>
             <div class="from-group mb-3">
+                <label for="image" class="form-label">Logo Perusahaan</label>
+                <input type="hidden" name="oldImage" value="{{ $client->image }}">
+                @if ($client->image)
+                    <img class="img-fluid d-block my-3" src="{{ asset('storage/' . $client->image) }}">
+                @else
+                    <img class="img-fluid" src="">
+                @endif
+                <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
+                    name="image" placeholder="Masukkan Logo Perusahaan...">
+            </div>
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+            <div class="from-group mb-3">
                 <label for="alamat" class="form-label">Alamat Perusahaan</label>
                 <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" cols="30"
-                    rows="5" placeholder="{{ old('alamat', $client->alamat) }}" required></textarea>
+                    rows="5" placeholder="Masukkan Alamat Perusahaan..." required>{{ old('kontak', $client->alamat) }}</textarea>
                 @error('semester')
                     <div class="invalid-feedback">
                         {{ $message }}

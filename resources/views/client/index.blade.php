@@ -40,7 +40,7 @@
                             <th>Nama Perusahaan</th>
                             <th>Kontak</th>
                             <th>Alamat</th>
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -48,7 +48,7 @@
                             <th>Nama Perusahaan</th>
                             <th>Kontak</th>
                             <th>Alamat</th>
-                            <th>Actions</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -57,7 +57,7 @@
                                 <td>{{ $cli->nama }}</td>
                                 <td>{{ $cli->kontak }}</td>
                                 <td>{{ $cli->alamat }}</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="/clients/{{ $cli->id }}" class="btn btn-circle btn-sm btn-primary"><i
                                             class="fa fa-eye"></i></a>
                                     <a href="/clients/{{ $cli->id }}/edit" class="btn btn-circle btn-sm btn-warning"><i

@@ -19,7 +19,7 @@
 
 
     <div class="col-lg-8">
-        <form action="/clients" method="POST">
+        <form action="/clients" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="from-group mb-3">
                 <label for="nama" class="form-label">Nama Perusahaan</label>
@@ -42,11 +42,19 @@
                 </div>
             @enderror
             <div class="from-group mb-3">
+                <label for="image" class="form-label">Logo Perusahaan</label>
+                <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
+                    name="image" placeholder="Masukkan Logo Perusahaan...">
+            </div>
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+            <div class="from-group mb-3">
                 <label for="alamat" class="form-label">Alamat Perusahaan</label>
                 <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" cols="30"
                     rows="5" placeholder="Masukkan Alamat Lengkap Perusahaan..." required></textarea>
-                {{-- <input type="alamat" class="form-control  @error('alamat') is-invalid @enderror" id="alamat"
-                    name="alamat" placeholder="Masukkan Alamat Perusahaan..." required> --}}
             </div>
             @error('alamat')
                 <div class="invalid-feedback">

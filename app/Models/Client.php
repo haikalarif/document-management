@@ -15,5 +15,6 @@ class Client extends Model
         'nama',
         'alamat',
         'kontak',
+        'image',
     ];
 }
