@@ -89,16 +89,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="from-group mb-3">
                             <label for="file" class="form-label">File Dokumen</label>
                             <input type="file" class="form-control-file" id="file" name="file">
                         </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info">Submit</button>
                 </div>
             </div>
         </div>

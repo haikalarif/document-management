@@ -32,3 +32,4 @@ Route::resource('/documents', DocumentsController::class);
 Route::resource('/products', ProductController::class);
 
 Route::resource('/projects', ProjectController::class);
+Route::post('/upload', [ProjectController::class, 'uploadFile']);
