@@ -10,4 +10,9 @@ class Project extends Model
     use HasFactory;
 
     public $table = "project";
+
+    protected $fillable = [
+        'client_id',
+        'product_id',
+    ];
 }
