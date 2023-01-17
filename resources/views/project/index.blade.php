@@ -61,8 +61,9 @@
                                     <td>{{ $data->nama }}</td>
                                     @foreach ($documents as $documents->nama)
                                         <td class="text-center">
-                                            <a href="#" class="text-secondary"><i
-                                                    class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
+                                            <a href="{{ asset('storage/' . $projectdocuments[1]->file) }}"
+                                                class="text-secondary" target="_blank">
+                                                <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
                                             <br>
                                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                                 data-target="#staticBackdrop">Upload</button>
@@ -89,16 +90,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('projects.upload') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="from-group mb-3">
                             <label for="file" class="form-label">File Dokumen</label>
                             <input type="file" class="form-control-file" id="file" name="file">
                         </div>
+                        {{-- <input type="hidden" name="project_id" value="{{ $project[1]->id }}">
+                        <input type="hidden" name="document_id" value="{{ $documents[1]->id }}"> --}}
+                        <div class="from-group mb-3">
+                            <label for="project_id" class="form-label">Project</label>
+                            <select name="project_id" id="project_id" class="form-control">
+                                <option value="" selected hidden>Pilih Project</option>
+                                @foreach ($project as $pro)
+                                    <option value={{ $pro->id }}>{{ $pro->id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="from-group mb-3">
+                            <label for="document_id" class="form-label">Document</label>
+                            <select name="document_id" id="document_id" class="form-control">
+                                <option value="" selected hidden>Pilih Product</option>
+                                @foreach ($documents as $doc)
+                                    <option value={{ $doc->id }}>{{ $doc->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-info">Submit</button>
                 </div>
             </div>
         </div>

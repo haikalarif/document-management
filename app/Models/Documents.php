@@ -14,4 +14,8 @@ class Documents extends Model
     protected $fillable = [
         'nama'
     ];
+
+    public function project() {
+        return $this->belongsToMany(Project::class, 'projectdocuments');
+    }
 }
