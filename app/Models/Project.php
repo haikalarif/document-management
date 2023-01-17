@@ -15,4 +15,8 @@ class Project extends Model
         'client_id',
         'product_id',
     ];
+
+    public function document() {
+        return $this->belongsToMany(Documents::class, 'projectdocuments');
+    }
 }

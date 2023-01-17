@@ -21,4 +21,12 @@ class ProjectDocument extends Model
     {
         return asset($this->file);
     }
+
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function document() {
+        return $this->belongsTo(Documents::class);
+    }
 }
