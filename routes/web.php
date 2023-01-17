@@ -31,4 +31,4 @@ Route::resource('/documents', DocumentsController::class);
 
 Route::resource('/products', ProductController::class);
 
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::resource('/projects', ProjectController::class);

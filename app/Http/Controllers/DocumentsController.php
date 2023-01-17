@@ -25,9 +25,14 @@ class DocumentsController extends Controller
             'nama' => 'required|max:255',
         ]);
 
-        Documents::create($validatedData);
+        $documents = Documents::create($validatedData);
+        if ($documents) {
+            $message = 'Dokumen Berhasil Ditambahkan!';
+        } else {
+            $message = 'Dokumen Gagal Ditambahkan!';
+        }
 
-        return redirect('/documents')->with('success','Dokumen Berhasil Ditambahkan!');
+        return redirect('/documents')->with('success', $message);
     }
 
     public function edit($id)

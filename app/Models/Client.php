@@ -17,4 +17,8 @@ class Client extends Model
         'kontak',
         'image',
     ];
+
+    public function product() {
+        return $this->belongsToMany(Product::class, 'project');
+    }
 }

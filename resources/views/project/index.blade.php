@@ -26,12 +26,12 @@
         </div>
         <div class="card-body">
             <div class="d-flex mb-3">
-                <as class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#tambahProject">
+                <a class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#tambahProject">
                     <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </span>
                     <span class="text">Tambah Project</span>
-                </as>
+                </a>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,79 +39,38 @@
                         <tr>
                             <th>Client</th>
                             <th>Products</th>
-                            <th class="text-center">BPP</th>
-                            <th class="text-center">FSD</th>
-                            <th class="text-center">BRD</th>
-                            <th class="text-center">UAT</th>
+                            @foreach ($documents as $item)
+                                <th class="text-center">{{ $item->nama }}</th>
+                            @endforeach
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Client</th>
                             <th>Products</th>
-                            <th class="text-center">BPP</th>
-                            <th class="text-center">FSD</th>
-                            <th class="text-center">BRD</th>
-                            <th class="text-center">UAT</th>
+                            @foreach ($documents as $item)
+                                <th class="text-center">{{ $item->nama }}</th>
+                            @endforeach
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Client 1</td>
-                            <td>Consuting</td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Client 2</td>
-                            <td>IT Goverment</td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary"><i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                <br>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#staticBackdrop">Upload</button>
-                            </td>
-                        </tr>
+                        @foreach ($client as $item)
+                            @foreach ($item->product as $data)
+                                <tr>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    @foreach ($documents as $documents->nama)
+                                        <td class="text-center">
+                                            <a href="#" class="text-secondary"><i
+                                                    class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
+                                            <br>
+                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                                data-target="#staticBackdrop">Upload</button>
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -157,26 +116,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('projects.store') }}" method="POST">
+                        @csrf
                         <div class="from-group mb-3">
-                            <label for="client" class="form-label">Client</label>
-                            <select name="client" id="client" class="form-control">
+                            <label for="client_id" class="form-label">Client</label>
+                            <select name="client_id" id="client_id" class="form-control">
                                 <option value="" selected hidden>Pilih Client</option>
-                                <option value="">Solmit</option>
+                                @foreach ($client as $item)
+                                    <option value={{ $item->id }}>{{ $item->nama }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="from-group mb-3">
-                            <label for="product" class="form-label">Product</label>
-                            <select name="product" id="product" class="form-control">
+                            <label for="product_id" class="form-label">Product</label>
+                            <select name="product_id" id="product_id" class="form-control">
                                 <option value="" selected hidden>Pilih Product</option>
-                                <option value="">Academy</option>
+                                @foreach ($product as $data)
+                                    <option value={{ $data->id }}>{{ $data->nama }}</option>
+                                @endforeach
                             </select>
                         </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </div>
         </div>
