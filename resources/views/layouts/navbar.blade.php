@@ -63,10 +63,6 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/clients">
-                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Client
-                </a>
                 <a class="dropdown-item" href="/products">
                     <i class="fa-brands fa-dropbox fa-sm fa-fw mr-2 text-gray-400"></i>
                     Product
@@ -74,6 +70,10 @@
                 <a class="dropdown-item" href="/projects">
                     <i class="fa-solid fa-chart-pie fa-sm fa-fw mr-2 text-gray-400"></i>
                     Project
+                </a>
+                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}/edit">
+                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Edit Profile
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
