@@ -61,7 +61,7 @@
                                     <td>{{ $data->nama }}</td>
                                     @foreach ($documents as $documents->nama)
                                         <td class="text-center">
-                                            <a href="{{ asset('storage/' . $projectdocuments[1]->file) }}"
+                                            <a href="{{ asset('storage/' . $projectdocuments->file) }}"
                                                 class="text-secondary" target="_blank">
                                                 <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
                                             <br>
