@@ -61,8 +61,8 @@
                                     <td>{{ $data->nama }}</td>
                                     @foreach ($documents as $documents->nama)
                                         <td class="text-center">
-                                            <a href="{{ asset('storage/' . $projectdocuments->file) }}"
-                                                class="text-secondary" target="_blank">
+                                            {{-- {{ asset('storage/' . $projectdocuments->file) }} --}}
+                                            <a href="#" class="text-secondary" target="_blank">
                                                 <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
                                             <br>
                                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
