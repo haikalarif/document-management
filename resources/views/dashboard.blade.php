@@ -52,7 +52,7 @@
                         <div class="col mr-2">
                             <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Project
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_project->count() }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-chart-pie fa-2x text-gray-300"></i>
