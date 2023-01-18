@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Eksternal
     </div>
 
     <!-- Nav Item - Tables -->
@@ -46,7 +46,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Internal
     </div>
 
     <!-- Nav Item - Tables -->

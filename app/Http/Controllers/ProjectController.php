@@ -14,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         return view('project.index', [
-            'projectdocuments' => ProjectDocument::all(),
+            'projectdocuments' => ProjectDocument::first(),
             'documents' => Documents::all(),
             'product' => Product::all(),
             'client' => Client::all(),
