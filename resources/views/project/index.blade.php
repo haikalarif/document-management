@@ -25,14 +25,16 @@
             <h6 class="m-0 font-weight-bold text-primary">Data List Projects</h6>
         </div>
         <div class="card-body">
-            <div class="d-flex mb-3">
-                <a class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#tambahProject">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah Project</span>
-                </a>
-            </div>
+            @can('admin')
+                <div class="d-flex mb-3">
+                    <a class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#tambahProject">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Project</span>
+                    </a>
+                </div>
+            @endcan
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

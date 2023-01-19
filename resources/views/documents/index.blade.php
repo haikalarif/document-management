@@ -25,28 +25,34 @@
             <h6 class="m-0 font-weight-bold text-primary">Data List Documents</h6>
         </div>
         <div class="card-body">
-            <div class="d-flex mb-3">
-                <a href="/documents/create" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah Document</span>
-                </a>
-            </div>
+            @can('admin')
+                <div class="d-flex mb-3">
+                    <a href="/documents/create" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Document</span>
+                    </a>
+                </div>
+            @endcan
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Actions</th>
+                            @can('admin')
+                                <th>Actions</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Actions</th>
+                            @can('admin')
+                                <th>Actions</th>
+                            @endcan
                         </tr>
                     </tfoot>
                     <tbody>
@@ -55,17 +61,19 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td>
-                                    <a href="/documents/{{ $data->id }}/edit" class="btn btn-circle btn-sm btn-warning"><i
-                                            class="fa fa-edit"></i></a>
-                                    <form action="/documents/{{ $data->id }}" method="POST" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-circle btn-sm btn-danger"
-                                            onclick="return confirm('Yakin Mau Di Hapus?')"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form>
-                                </td>
+                                @can('admin')
+                                    <td>
+                                        <a href="/documents/{{ $data->id }}/edit"
+                                            class="btn btn-circle btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                        <form action="/documents/{{ $data->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-circle btn-sm btn-danger"
+                                                onclick="return confirm('Yakin Mau Di Hapus?')"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

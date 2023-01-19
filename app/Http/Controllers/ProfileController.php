@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index', [
-            'users' => User::all()
-        ]);
+        //
     }
 
     /**
@@ -29,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.tambah');
+        //
     }
 
     /**
@@ -40,23 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:5|max:255',
-            'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg',
-            'role' => ''
-        ]);
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->image = $request->file('image')->store('images');
-        $user->role = $request->role;
-        $user->save();
-
-        return redirect('/user')->with('success','Data Baru Berhasil Ditambahkan!');
+        //
     }
 
     /**
@@ -78,8 +59,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.edit', compact(
+        $user = Auth::user($id);
+        return view('user.editProfile', compact(
             'user'
         ));
     }
@@ -111,7 +92,7 @@ class UserController extends Controller
         User::where('id', $id)
             ->update($validatedData);
 
-        return redirect('/user')->with('success', 'Data Berhasil Di Update!!');
+        return redirect('/dashboard')->with('success', 'Profile Anda Berhasil Di Update!!');
     }
 
     /**
@@ -122,8 +103,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect('/user')->with('success','Data Telah Berhasil Di Hapus!!');
+        //
     }
 }

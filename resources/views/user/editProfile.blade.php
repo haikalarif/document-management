@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form action="/user/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/editprofile/{{ $user->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="from-group mb-3">

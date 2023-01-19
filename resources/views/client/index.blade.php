@@ -25,14 +25,16 @@
             <h6 class="m-0 font-weight-bold text-primary">Data List Client</h6>
         </div>
         <div class="card-body">
-            <div class="d-flex mb-3">
-                <a href="/clients/create" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah Client</span>
-                </a>
-            </div>
+            @can('admin')
+                <div class="d-flex mb-3">
+                    <a href="/clients/create" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Tambah Client</span>
+                    </a>
+                </div>
+            @endcan
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -40,7 +42,9 @@
                             <th>Nama Perusahaan</th>
                             <th>Kontak</th>
                             <th>Alamat</th>
-                            <th class="text-center">Actions</th>
+                            @can('admin')
+                                <th class="text-center">Actions</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tfoot>
@@ -48,7 +52,9 @@
                             <th>Nama Perusahaan</th>
                             <th>Kontak</th>
                             <th>Alamat</th>
-                            <th class="text-center">Actions</th>
+                            @can('admin')
+                                <th class="text-center">Actions</th>
+                            @endcan
                         </tr>
                     </tfoot>
                     <tbody>
@@ -57,19 +63,21 @@
                                 <td>{{ $cli->nama }}</td>
                                 <td>{{ $cli->kontak }}</td>
                                 <td>{{ $cli->alamat }}</td>
-                                <td class="text-center">
-                                    <a href="/clients/{{ $cli->id }}" class="btn btn-circle btn-sm btn-primary"><i
-                                            class="fa fa-eye"></i></a>
-                                    <a href="/clients/{{ $cli->id }}/edit" class="btn btn-circle btn-sm btn-warning"><i
-                                            class="fa fa-edit"></i></a>
-                                    <form action="/clients/{{ $cli->id }}" method="POST" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-circle btn-sm btn-danger"
-                                            onclick="return confirm('Yakin Mau Di Hapus?')"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form>
-                                </td>
+                                @can('admin')
+                                    <td class="text-center">
+                                        <a href="/clients/{{ $cli->id }}" class="btn btn-circle btn-sm btn-primary"><i
+                                                class="fa fa-eye"></i></a>
+                                        <a href="/clients/{{ $cli->id }}/edit" class="btn btn-circle btn-sm btn-warning"><i
+                                                class="fa fa-edit"></i></a>
+                                        <form action="/clients/{{ $cli->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-circle btn-sm btn-danger"
+                                                onclick="return confirm('Yakin Mau Di Hapus?')"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

@@ -71,7 +71,7 @@
                     <i class="fa-solid fa-chart-pie fa-sm fa-fw mr-2 text-gray-400"></i>
                     Project
                 </a>
-                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}/edit">
+                <a class="dropdown-item" href="/editprofile/{{ Auth::user()->id }}/edit">
                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                     Edit Profile
                 </a>
