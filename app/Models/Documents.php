@@ -12,7 +12,7 @@ class Documents extends Model
     public $table = 'documents';
 
     protected $fillable = [
-        'nama'
+        'name'
     ];
 
     public function project() {

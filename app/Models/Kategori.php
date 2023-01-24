@@ -12,7 +12,7 @@ class Kategori extends Model
     public $table = "kategori";
 
     protected $fillable = [
-        'nama',
+        'name',
     ];
 
     public function product()

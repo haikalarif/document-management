@@ -13,12 +13,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
+        $project = Project::with('client', 'product')->get();
+
         return view('project.index', [
             'projectdocuments' => ProjectDocument::first(),
             'documents' => Documents::all(),
             'product' => Product::all(),
             'client' => Client::all(),
-            'project' => Project::all()
+            'project' => $project
         ]);
     }
 

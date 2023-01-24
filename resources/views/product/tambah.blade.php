@@ -24,7 +24,7 @@
             <div class="from-group mb-3">
                 <label for="nama" class="form-label">Nama</label>
                 <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
-                    placeholder="Masukkan Nama Product..." required>
+                    placeholder="Masukkan Nama Product..." name="nama" required>
             </div>
             @error('nama')
                 <div class="invalid-feedback">
@@ -36,7 +36,7 @@
                 <select class="custom-select @error('kategori') is-invalid @enderror" name="kategori" id="kategori" aria-label="Default select example">
                     <option selected disabled>- Pilih -</option>
                     @foreach ($kategori as $item)
-                        <option value={{ $item->id }}>{{ $item->nama }}</option>
+                        <option value={{ $item->id }}>{{ $item->name }}</option>
                     @endforeach
                   </select>
             </div>

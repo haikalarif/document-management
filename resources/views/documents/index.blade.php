@@ -60,7 +60,7 @@
                         @foreach ($documents as $data)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $data->nama }}</td>
+                                <td>{{ $data->name }}</td>
                                 @can('admin')
                                     <td>
                                         <a href="/documents/{{ $data->id }}/edit"

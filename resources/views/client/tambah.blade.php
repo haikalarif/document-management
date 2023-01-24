@@ -22,19 +22,19 @@
         <form action="/clients" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="from-group mb-3">
-                <label for="nama" class="form-label">Nama Perusahaan</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
+                <label for="name" class="form-label">Nama Perusahaan</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                     placeholder="Masukkan Nama Perusahaan..." required>
             </div>
-            @error('nama')
+            @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
             <div class="from-group mb-3">
-                <label for="kontak" class="form-label">Kontak Perusahaan</label>
-                <input type="text" class="form-control @error('kontak') is-invalid @enderror" id="kontak"
-                    name="kontak" placeholder="Masukkan Kontak Perusahaan...">
+                <label for="contact" class="form-label">Kontak Perusahaan</label>
+                <input type="text" class="form-control @error('kontak') is-invalid @enderror" id="contact"
+                    name="contact" placeholder="Masukkan Kontak Perusahaan...">
             </div>
             @error('kontak')
                 <div class="invalid-feedback">
@@ -52,8 +52,8 @@
                 </div>
             @enderror
             <div class="from-group mb-3">
-                <label for="alamat" class="form-label">Alamat Perusahaan</label>
-                <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" cols="30"
+                <label for="address" class="form-label">Alamat Perusahaan</label>
+                <textarea name="address" class="form-control @error('alamat') is-invalid @enderror" id="address" cols="30"
                     rows="5" placeholder="Masukkan Alamat Lengkap Perusahaan..." required></textarea>
             </div>
             @error('alamat')

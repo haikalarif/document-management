@@ -22,7 +22,7 @@ class DocumentsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
+            'name' => 'required|max:255',
         ]);
 
         $documents = Documents::create($validatedData);
@@ -44,11 +44,11 @@ class DocumentsController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
         ]);
 
         $documents = Documents::findOrFail($id);
-        $documents->nama = $request->nama;
+        $documents->name = $request->name;
         $documents->save();
         return redirect()->route('documents.index')
             ->with('success', 'Dokumen berhasil diupdate!');
