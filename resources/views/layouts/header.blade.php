@@ -11,7 +11,7 @@
 
     <title>@yield('title') - DocMan</title>
 
-    <link rel="website icon" href="{{asset('dochub.svg')}}">
+    <link rel="website icon" href="{{asset('dochub.svg')}}" >
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('temp') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
