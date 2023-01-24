@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('name');
             $table->foreignId('id_kategori');
             $table->timestamps();
         });

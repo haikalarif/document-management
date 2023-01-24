@@ -23,6 +23,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('temp') }}/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
     <!-- Custom styles for this page -->
     <link href="{{ asset('temp') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 

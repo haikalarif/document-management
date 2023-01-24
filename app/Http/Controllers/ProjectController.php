@@ -50,7 +50,10 @@ class ProjectController extends Controller
     public function upload(Request $request)
     {
         $validated = $request->validate([
-            'file' => 'required|mimes:doc,docx,pdf|max:2048'
+            'file' => 'required|mimes:doc,docx,pdf|max:5048'
+        ], 
+        [
+            'file.max' => 'Ukuran file melebihi 5MB'
         ]);
 
         // $project = Project::FindOrFail($project_id);

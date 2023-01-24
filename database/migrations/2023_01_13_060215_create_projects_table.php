@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('product_id');
+            $table->date('start_project');
+            $table->date('finish_project');
             $table->timestamps();
         });
     }

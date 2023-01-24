@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id');
             $table->foreignId('document_id');
+            $table->string('filename');
             $table->timestamps();
         });
     }
