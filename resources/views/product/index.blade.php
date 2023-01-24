@@ -63,7 +63,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data->nama }}</td>
-                                <td>{{ $data->kategori->nama }}</td>
+                                <td>{{ $data->kategori->name }}</td>
                                 @can('admin')
                                     <td>
                                         <a href="/products/{{ $data->id }}/edit"

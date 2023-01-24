@@ -42,7 +42,7 @@
                             <th>Client</th>
                             <th>Products</th>
                             @foreach ($documents as $item)
-                                <th class="text-center">{{ $item->nama }}</th>
+                                <th class="text-center">{{ $item->name }}</th>
                             @endforeach
                         </tr>
                     </thead>
@@ -51,17 +51,16 @@
                             <th>Client</th>
                             <th>Products</th>
                             @foreach ($documents as $item)
-                                <th class="text-center">{{ $item->nama }}</th>
+                                <th class="text-center">{{ $item->name }}</th>
                             @endforeach
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($client as $item)
-                            @foreach ($item->product as $data)
-                                <tr>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $data->nama }}</td>
-                                    @foreach ($documents as $documents->nama)
+                        @foreach ($project as $item)
+                            <tr>
+                                <td>{{ $item->client->name }}</td>
+                                <td>{{ $item->product->nama }}</td>
+                                    @foreach ($documents as $documents->name)
                                         <td class="text-center">
                                             {{-- {{ asset('storage/' . $projectdocuments->file) }} --}}
                                             <a href="#" class="text-secondary" target="_blank">
@@ -72,7 +71,6 @@
                                         </td>
                                     @endforeach
                                 </tr>
-                            @endforeach
                         @endforeach
                     </tbody>
                 </table>
@@ -114,7 +112,7 @@
                             <select name="document_id" id="document_id" class="form-control">
                                 <option value="" selected hidden>Pilih Product</option>
                                 @foreach ($documents as $doc)
-                                    <option value={{ $doc->id }}>{{ $doc->nama }}</option>
+                                    <option value={{ $doc->id }}>{{ $doc->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -145,7 +143,7 @@
                             <select name="client_id" id="client_id" class="form-control">
                                 <option value="" selected hidden>Pilih Client</option>
                                 @foreach ($client as $item)
-                                    <option value={{ $item->id }}>{{ $item->nama }}</option>
+                                    <option value={{ $item->id }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>

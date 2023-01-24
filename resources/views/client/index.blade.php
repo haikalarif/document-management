@@ -60,9 +60,9 @@
                     <tbody>
                         @foreach ($client as $cli)
                             <tr>
-                                <td>{{ $cli->nama }}</td>
-                                <td>{{ $cli->kontak }}</td>
-                                <td>{{ $cli->alamat }}</td>
+                                <td>{{ $cli->name }}</td>
+                                <td>{{ $cli->contact }}</td>
+                                <td>{{ $cli->address }}</td>
                                 @can('admin')
                                     <td class="text-center">
                                         <a href="/clients/{{ $cli->id }}" class="btn btn-circle btn-sm btn-primary"><i

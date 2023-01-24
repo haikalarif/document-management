@@ -22,9 +22,9 @@
             @csrf
             @method('put')
             <div class="from-group mb-3">
-                <label for="nama" class="form-label">Nama Document</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
-                    value="{{ old('nama', $documents->nama) }}" placeholder="Masukkan Nama Document..." required autofocus>
+                <label for="name" class="form-label">Nama Document</label>
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="name" name="name"
+                    value="{{ old('name', $documents->name) }}" placeholder="Masukkan Nama Document..." required autofocus>
                 @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}

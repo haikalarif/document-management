@@ -22,8 +22,8 @@
         <form action="/documents" method="POST">
             @csrf
             <div class="from-group mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="name" name="name"
                     placeholder="Masukkan Nama Document..." required>
             </div>
             @error('nama')

@@ -41,9 +41,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'alamat' => 'required',
-            'kontak' => 'required|max:255',
+            'name' => 'required|max:255',
+            'address' => 'required',
+            'contact' => 'required|max:255',
             'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
 
@@ -92,9 +92,9 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $rules = [
-            'nama' => 'required|max:255',
-            'alamat' => 'required',
-            'kontak' => '',
+            'name' => 'required|max:255',
+            'address' => 'required',
+            'contact' => '',
             'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ];
 

@@ -15,11 +15,11 @@ class Product extends Model
         'nama',
     ];
 
-    public function client() {
-        return $this->belongsToMany(Client::class, 'project');
-    }
-
     public function kategori() {
         return $this->belongsTo('App\Models\kategori', 'id_kategori');
+    }
+
+    public function project() {
+        return $this->hasMany(Project::class);
     }
 }

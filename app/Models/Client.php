@@ -12,13 +12,13 @@ class Client extends Model
     public $table = "client";
 
     protected $fillable = [
-        'nama',
-        'alamat',
-        'kontak',
+        'name',
+        'address',
+        'contact',
         'image',
     ];
 
-    public function product() {
-        return $this->belongsToMany(Product::class, 'project');
+    public function project() {
+        return $this->hasMany(Project::class);
     }
 }
