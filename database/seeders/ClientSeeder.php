@@ -16,9 +16,9 @@ class ClientSeeder extends Seeder
     public function run()
     {
         DB::table('client')->insert([
-            'nama' => 'Solmit',
-            'alamat' => 'Bandung',
-            'Kontak' => '121323425'
+            'name' => 'Solmit',
+            'address' => 'Bandung',
+            'contact' => '121323425'
         ]);
     }
 }

@@ -16,19 +16,19 @@ class DokumenSeeder extends Seeder
     public function run()
     {
         DB::table('documents')->insert([
-            'nama' => 'BPP'
+            'name' => 'BPP'
         ]);
         DB::table('documents')->insert([
-            'nama' => 'FSD'
+            'name' => 'FSD'
         ]);
         DB::table('documents')->insert([
-            'nama' => 'BRD'
+            'name' => 'BRD'
         ]);
         DB::table('documents')->insert([
-            'nama' => 'UAT Script'
+            'name' => 'UAT Script'
         ]);
         DB::table('documents')->insert([
-            'nama' => 'BAST'
+            'name' => 'BAST'
         ]);
     }
 }
