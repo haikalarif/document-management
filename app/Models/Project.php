@@ -25,8 +25,4 @@ class Project extends Model
     public function product() {
         return $this->belongsTo(Product::class);
     }
-
-    // public function document() {
-    //     return $this->belongsToMany(Documents::class, 'projectdocuments');
-    // }
 }

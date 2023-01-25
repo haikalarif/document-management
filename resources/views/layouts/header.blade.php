@@ -11,7 +11,7 @@
 
     <title>@yield('title') - DocMan</title>
 
-    <link rel="website icon" href="{{asset('dochub.svg')}}" >
+    <link rel="website icon" href="{{ asset('dochub.svg') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('temp') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="{{ asset('temp') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('temp') }}/css/style.css" rel="stylesheet">
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
