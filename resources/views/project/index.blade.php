@@ -60,17 +60,62 @@
                             <tr>
                                 <td>{{ $item->client->name }}</td>
                                 <td>{{ $item->product->nama }}</td>
-                                    @foreach ($documents as $documents->name)
-                                        <td class="text-center">
-                                            {{-- {{ asset('storage/' . $projectdocuments->file) }} --}}
-                                            <a href="#" class="text-secondary" target="_blank">
-                                                <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                            <br>
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                data-target="#staticBackdrop">Upload</button>
-                                        </td>
-                                    @endforeach
-                                </tr>
+                                @foreach ($documents as $doc)
+                                    <td class="text-center">
+                                        <a href="{{ asset('storage/' . $projectdocuments->file) }}"
+                                            target="_blank">Download</a>
+                                        {{-- @foreach ($projectdocuments as $prodoc)
+                                            @if ($prodoc->file == '')
+                                                <p>Not File</p>
+                                            @else
+                                                <a href="">Download</a>
+                                            @endif
+                                        @endforeach --}}
+                                        <form action="{{ route('projects.upload') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="project_id" value="{{ $item->id }}">
+                                            <input type="hidden" name="document_id" value="{{ $doc->id }}">
+                                            <div class="mt-3">
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input"
+                                                            id="inputGroupFile04 file" name="file">
+                                                        <label class="custom-file-label" for="inputGroupFile04">Choose
+                                                            File</label>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-success" type="submit"
+                                                            id="inputGroupFileAddon04">
+                                                            <i class="fa-solid fa-upload"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="upload">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input"
+                                                            id="inputGroupFile01 file" name="file"
+                                                            aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label" for="inputGroupFile01"></label>
+                                                    </div>
+                                                    <input type="file" name="file" id="file">
+                                            </div> --}}
+                                                {{-- <button type="submit" class="btn-hijau">
+                                                    <i class="fa-solid fa-upload"></i> Upload
+                                                </button> --}}
+                                            </div>
+                                            {{-- <input type="file" name="file" id="file">
+                                            <button type="submit">Upload</button> --}}
+                                        </form>
+                                        {{-- {{ asset('storage/' . $projectdocuments->file) }} --}}
+                                        {{-- <a href="#" class="text-secondary" target="_blank">
+                                            <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
+                                        <br>
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#staticBackdrop">Upload</button> --}}
+                                    </td>
+                                @endforeach
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -155,6 +200,16 @@
                                     <option value={{ $data->id }}>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="from-group mb-3">
+                            <label for="start_project" class="form-label">Tanggal Awal</label>
+                            <input type="date" class="form-control @error('start_project') is-invalid @enderror"
+                                id="start_project" name="start_project" placeholder="Masukkan Kontak Perusahaan...">
+                        </div>
+                        <div class="from-group mb-3">
+                            <label for="finish_project" class="form-label">Tanggal Akhir</label>
+                            <input type="date" class="form-control @error('finish_project') is-invalid @enderror"
+                                id="finish_project" name="finish_project" placeholder="Masukkan Kontak Perusahaan...">
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Simpan</button>

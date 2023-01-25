@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Project;
@@ -14,13 +16,15 @@ class ProjectController extends Controller
     public function index()
     {
         $project = Project::with('client', 'product')->get();
+        $filename = DB::table('projectdocuments')->where('file', 'value')->get();
 
         return view('project.index', [
-            'projectdocuments' => ProjectDocument::first(),
+            'projectdocuments' => ProjectDocument::find(1),
             'documents' => Documents::all(),
             'product' => Product::all(),
             'client' => Client::all(),
-            'project' => $project
+            'project' => $project,
+            'filename' => $filename,
         ]);
     }
 
@@ -36,6 +40,8 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'client_id' => 'required',
             'product_id' => 'required',
+            'start_project' => '',
+            'finish_project' => '',
         ]);
 
         $project = Project::create($validated);
@@ -51,32 +57,29 @@ class ProjectController extends Controller
 
     public function upload(Request $request)
     {
-        $validated = $request->validate([
-            'file' => 'required|mimes:doc,docx,pdf|max:5048'
-        ], 
-        [
-            'file.max' => 'Ukuran file melebihi 5MB'
-        ]);
+        $file = $request->file('file');
+        $project_id = $request->input('project_id');
+        $document_id = $request->input('document_id');
 
-        // $project = Project::FindOrFail($project_id);
-        // $documents = Documents::FindOrFail($document_id);
-        // $project_id = $project->id;
-        // $document_id = $documents->id;
+        $path = Storage::putFile('documents', $file);
 
-        if($request->file('file')){
-            $validated['file'] = $request->file('file')->store('documents');
-        }
-
-        // ProjectDocument::create($validated);
-        $pdf = new ProjectDocument;
-        $pdf->file = $validated['file'];
-        $pdf->project_id = $request->project_id;
-        $pdf->document_id = $request->document_id;
-        $pdf->save();
-
+        // save file information to database
+        $data = new ProjectDocument;
+        $data->file = $path;
+        $data->project_id = $project_id;
+        $data->document_id = $document_id;
+        $data->save();
 
         return redirect()->route('projects.index')
             ->with('success', 'File Berhasil Di Upload!');
+    }
+
+    public function showFile($id)
+    {
+        $pd = DB::table('projectdocuments')->where('id', $id)->first();
+        return view('project.index', [
+            'pd' => $pd
+        ]);
     }
 
     public function destroy(Project $project)

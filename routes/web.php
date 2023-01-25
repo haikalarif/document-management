@@ -38,3 +38,4 @@ Route::resource('/products', ProductController::class)->middleware('auth');
 
 Route::resource('/projects', ProjectController::class)->middleware('auth');
 Route::post('/projects/upload', [ProjectController::class, 'upload'])->name('projects.upload')->middleware('auth');
+// Route::get('/projects/{$id}', [ProjectController::class, 'showFile'])->name('projects.showFile')->middleware('auth');
