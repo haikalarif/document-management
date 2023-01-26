@@ -15,7 +15,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $project = Project::with('client', 'product')->get();
+        $project = Project::with('client', 'product', 'documents')->get();
+        // dd ($project->toArray());
         $filename = DB::table('projectdocuments')->where('file', 'value')->get();
 
         return view('project.index', [

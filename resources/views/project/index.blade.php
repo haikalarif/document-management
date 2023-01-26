@@ -57,20 +57,23 @@
                     </tfoot>
                     <tbody>
                         @foreach ($project as $item)
+                            @php
+                                $projectDocuments = $item->documents->pluck('pivot.file', 'id');
+                            @endphp
                             <tr>
                                 <td>{{ $item->client->name }}</td>
                                 <td>{{ $item->product->nama }}</td>
                                 @foreach ($documents as $doc)
+                                    @php
+                                        $ownDocument = $projectDocuments[$doc->id] ?? null;
+                                    @endphp
                                     <td class="text-center">
-                                        <a href="{{ asset('storage/' . $projectdocuments->file) }}"
-                                            target="_blank">Download</a>
-                                        {{-- @foreach ($projectdocuments as $prodoc)
-                                            @if ($prodoc->file == '')
-                                                <p>Not File</p>
-                                            @else
-                                                <a href="">Download</a>
-                                            @endif
-                                        @endforeach --}}
+                                        @if (empty($ownDocument))
+                                            <p><i class="fas fa-file-excel text-secondary" style="font-size: 20px"></i></p>
+                                        @else
+                                            <a href="{{ asset('storage/' . $ownDocument) }}"
+                                                target="_blank"><i class="fas fa-file-download text-primary" style="font-size: 20px"></i></a>
+                                        @endif
                                         <form action="{{ route('projects.upload') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
