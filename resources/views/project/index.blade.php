@@ -80,6 +80,7 @@
                                             <input type="hidden" name="project_id" value="{{ $item->id }}">
                                             <input type="hidden" name="document_id" value="{{ $doc->id }}">
                                             <div class="mt-3">
+                                                @can ('admin')
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -94,28 +95,8 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="upload">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input"
-                                                            id="inputGroupFile01 file" name="file"
-                                                            aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01"></label>
-                                                    </div>
-                                                    <input type="file" name="file" id="file">
-                                            </div> --}}
-                                                {{-- <button type="submit" class="btn-hijau">
-                                                    <i class="fa-solid fa-upload"></i> Upload
-                                                </button> --}}
-                                            </div>
-                                            {{-- <input type="file" name="file" id="file">
-                                            <button type="submit">Upload</button> --}}
+                                                @endcan
                                         </form>
-                                        {{-- {{ asset('storage/' . $projectdocuments->file) }} --}}
-                                        {{-- <a href="#" class="text-secondary" target="_blank">
-                                            <i class="fa-solid fa-file-pdf fa-xl mb-4"></i></a>
-                                        <br>
-                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                            data-target="#staticBackdrop">Upload</button> --}}
                                     </td>
                                 @endforeach
                             </tr>
@@ -126,53 +107,8 @@
         </div>
     </div>
 
-    <!-- Modal Uplaod File -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Upload File Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('projects.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="from-group mb-3">
-                            <label for="file" class="form-label">File Dokumen</label>
-                            <input type="file" class="form-control-file" id="file" name="file">
-                        </div>
-                        {{-- <input type="hidden" name="project_id" value="{{ $project[1]->id }}">
-                        <input type="hidden" name="document_id" value="{{ $documents[1]->id }}"> --}}
-                        <div class="from-group mb-3">
-                            <label for="project_id" class="form-label">Project</label>
-                            <select name="project_id" id="project_id" class="form-control">
-                                <option value="" selected hidden>Pilih Project</option>
-                                @foreach ($project as $pro)
-                                    <option value={{ $pro->id }}>{{ $pro->id }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="from-group mb-3">
-                            <label for="document_id" class="form-label">Document</label>
-                            <select name="document_id" id="document_id" class="form-control">
-                                <option value="" selected hidden>Pilih Product</option>
-                                @foreach ($documents as $doc)
-                                    <option value={{ $doc->id }}>{{ $doc->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-info">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Tambah Project -->
+    @can ('admin')
     <div class="modal fade" id="tambahProject" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -221,4 +157,5 @@
             </div>
         </div>
     </div>
+    @endcan
 @endsection
