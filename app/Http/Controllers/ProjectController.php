@@ -83,11 +83,11 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        $project = Project::findOrFail($project);
+        $project = Project::findOrFail($id);
 
         Project::destroy($project->id);
-        return redirect('/projects')->with('success','Data Telah Berhasil Di Hapus!!');
+        return redirect('/projects')->with('message','Data Telah Berhasil Di Hapus!!');
     }
 }

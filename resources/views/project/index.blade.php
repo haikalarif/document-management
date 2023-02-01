@@ -19,6 +19,17 @@
         </div>
     @endif
 
+    @if (session()->has('message'))
+        <div class="alert alert-danger alert-dismissible col-lg-12" role='alert'>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{-- <button type="button" class="close" data-disniss="alert" aria-hidden="true">&times;</button> --}}
+            <h5><i class="icon fa fa-check-square"></i> Berhasil!!!</h5>
+            {{ session('message') }}
+        </div>
+    @endif
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -38,21 +49,23 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Client</th>
                             <th>Products</th>
                             @foreach ($documents as $item)
-                                <th class="text-center">{{ $item->name }}</th>
+                                <th>{{ $item->name }}</th>
                             @endforeach
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
-                        <tr>
+                        <tr class="text-center">
                             <th>Client</th>
                             <th>Products</th>
                             @foreach ($documents as $item)
-                                <th class="text-center">{{ $item->name }}</th>
+                                <th>{{ $item->name }}</th>
                             @endforeach
+                            <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -99,6 +112,15 @@
                                         </form>
                                     </td>
                                 @endforeach
+                                <td class="text-center">
+                                    <form action="/projects/{{ $item->id }}" method="POST" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-circle btn-sm btn-danger" title="Hapus"
+                                            onclick="return confirm('Yakin Mau Di Hapus?')"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
