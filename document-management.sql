@@ -41,7 +41,7 @@ CREATE TABLE `client` (
 -- Dumping data untuk tabel `client`
 --
 
-INSERT INTO `client` (`id`, `nama`, `alamat`, `kontak`, `image`, `created_at`, `updated_at`) VALUES
+INSERT INTO `client` (`id`, `name`, `address`, `contact`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Solmit', 'Bandung', '121323425', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE `documents` (
 -- Dumping data untuk tabel `documents`
 --
 
-INSERT INTO `documents` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `documents` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'BPP', NULL, NULL),
 (2, 'FSD', NULL, NULL),
 (3, 'BRD', NULL, NULL),
@@ -101,7 +101,7 @@ CREATE TABLE `kategori` (
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+INSERT INTO `kategori` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Solutions', NULL, NULL),
 (2, 'Consulting', NULL, NULL),
 (3, 'Training', NULL, NULL),
@@ -184,7 +184,7 @@ CREATE TABLE `product` (
 -- Dumping data untuk tabel `product`
 --
 
-INSERT INTO `product` (`id`, `nama`, `id_kategori`, `created_at`, `updated_at`) VALUES
+INSERT INTO `product` (`id`, `name`, `id_kategori`, `created_at`, `updated_at`) VALUES
 (1, 'Solmit Academy', 3, '2023-01-18 00:29:32', '2023-01-18 00:29:32');
 
 -- --------------------------------------------------------
