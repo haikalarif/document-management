@@ -31,6 +31,17 @@
                     </div>
                 @enderror
             </div>
+            <div class="from-group mb-3">
+                <label for="desc" class="form-label">Deskripsi Document</label>
+                <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc"
+                    value="{{ old('desc', $documents->desc) }}" placeholder="Masukkan Deskripsi Document..." required
+                    autofocus>
+                @error('desc')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
             <br>
             <div class="from-group">
                 <button type="submit" class="btn bg-gradient-primary text-white">Update</button>

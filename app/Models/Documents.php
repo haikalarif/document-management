@@ -12,10 +12,12 @@ class Documents extends Model
     public $table = 'documents';
 
     protected $fillable = [
-        'name'
+        'name',
+        'desc'
     ];
 
-    public function project() {
+    public function project()
+    {
         return $this->belongsToMany(Project::class, 'projectdocuments');
     }
 }

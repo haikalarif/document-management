@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DokumenSeeder extends Seeder
 {
@@ -16,19 +17,29 @@ class DokumenSeeder extends Seeder
     public function run()
     {
         DB::table('documents')->insert([
-            'name' => 'BPP'
+            'name' => 'BPP',
+            'desc' => 'Badan Perenanaan dan Pengembangan',
+            'created_at' => Carbon::now()
         ]);
         DB::table('documents')->insert([
-            'name' => 'FSD'
+            'name' => 'FSD',
+            'desc' => 'Functional Specification Document',
+            'created_at' => Carbon::now()
         ]);
         DB::table('documents')->insert([
-            'name' => 'BRD'
+            'name' => 'BRD',
+            'desc' => 'Business Requirements Document',
+            'created_at' => Carbon::now()
         ]);
         DB::table('documents')->insert([
-            'name' => 'UAT Script'
+            'name' => 'UAT Script',
+            'desc' => 'User Acceptance Test Script',
+            'created_at' => Carbon::now()
         ]);
         DB::table('documents')->insert([
-            'name' => 'BAST'
+            'name' => 'BAST',
+            'desc' => 'Berita Acara Serah Terima',
+            'created_at' => Carbon::now()
         ]);
     }
 }

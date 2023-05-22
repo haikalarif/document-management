@@ -31,6 +31,16 @@
                     {{ $message }}
                 </div>
             @enderror
+            <div class="from-group mb-3">
+                <label for="desc" class="form-label">Deskripsi</label>
+                <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc"
+                    placeholder="Masukkan Deskripsi Document..." required>
+            </div>
+            @error('desc')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
             <br>
             <div class="from-group mb-5">
                 <button type="submit" class="btn bg-gradient-primary text-white">Simpan</button>

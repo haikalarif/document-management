@@ -7,15 +7,17 @@ use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $documents = Documents::all();
-        
+
         return view('documents.index', [
             'documents' => $documents
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('documents.tambah');
     }
 
@@ -23,6 +25,7 @@ class DocumentsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'desc' => 'required|max:255',
         ]);
 
         $documents = Documents::create($validatedData);
@@ -45,10 +48,12 @@ class DocumentsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
+            'desc' => 'required',
         ]);
 
         $documents = Documents::findOrFail($id);
         $documents->name = $request->name;
+        $documents->desc = $request->desc;
         $documents->save();
         return redirect()->route('documents.index')
             ->with('success', 'Dokumen berhasil diupdate!');
