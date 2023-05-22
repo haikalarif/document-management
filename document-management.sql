@@ -1,30 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server version:               10.10.3-MariaDB-log - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             12.1.0.6537
-
---
--- Struktur dari tabel `client`
---
-
-CREATE TABLE `client` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
-  `kontak` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `client`
---
-
-INSERT INTO `client` (`id`, `name`, `address`, `contact`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Solmit', 'Bandung', '121323425', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -38,16 +16,16 @@ INSERT INTO `client` (`id`, `name`, `address`, `contact`, `image`, `created_at`,
 
 
 -- Dumping database structure for document-management
-CREATE DATABASE IF NOT EXISTS `document-management` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `document-management` /*!40100 DEFAULT CHARACTER SET armscii8 COLLATE armscii8_bin */;
 USE `document-management`;
 
 -- Dumping structure for table document-management.client
 CREATE TABLE IF NOT EXISTS `client` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -60,9 +38,9 @@ REPLACE INTO `client` (`id`, `name`, `address`, `contact`, `image`, `created_at`
 
 -- Dumping structure for table document-management.documents
 CREATE TABLE IF NOT EXISTS `documents` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `desc` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -70,94 +48,31 @@ CREATE TABLE IF NOT EXISTS `documents` (
 
 -- Dumping data for table document-management.documents: ~5 rows (approximately)
 REPLACE INTO `documents` (`id`, `name`, `desc`, `created_at`, `updated_at`) VALUES
-	(1, 'BPP', 'Badan Perenanaan dan Pengembangan', '2023-02-17 00:26:07', NULL),
-	(2, 'FSD', 'Functional Specification Document', '2023-02-17 00:26:07', NULL),
-	(3, 'BRD', 'Business Requirements Document', '2023-02-17 00:26:07', NULL),
-	(4, 'UAT Script', 'User Acceptance Test Script', '2023-02-17 00:26:07', NULL),
-	(5, 'BAST', 'Berita Acara Serah Terima', '2023-02-17 00:26:07', NULL);
+	(1, 'BPP', 'Badan Perenanaan dan Pengembangan', '2023-05-21 21:16:28', NULL),
+	(2, 'FSD', 'Functional Specification Document', '2023-05-21 21:16:28', NULL),
+	(3, 'BRD', 'Business Requirements Document', '2023-05-21 21:16:28', NULL),
+	(4, 'UAT Script', 'User Acceptance Test Script', '2023-05-21 21:16:28', NULL),
+	(5, 'BAST', 'Berita Acara Serah Terima', '2023-05-21 21:16:28', NULL);
 
 -- Dumping structure for table document-management.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `documents`
---
-
-INSERT INTO `documents` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'BPP', NULL, NULL),
-(2, 'FSD', NULL, NULL),
-(3, 'BRD', NULL, NULL),
-(4, 'UAT Script', NULL, NULL),
-(5, 'BAST', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) NOT NULL,
   `connection` text NOT NULL,
   `queue` text NOT NULL,
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kategori`
---
-
-CREATE TABLE `kategori` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `kategori`
---
-
-INSERT INTO `kategori` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Solutions', NULL, NULL),
-(2, 'Consulting', NULL, NULL),
-(3, 'Training', NULL, NULL),
-(4, 'Research', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table document-management.failed_jobs: ~0 rows (approximately)
 
 -- Dumping structure for table document-management.kategori
 CREATE TABLE IF NOT EXISTS `kategori` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -172,9 +87,9 @@ REPLACE INTO `kategori` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 -- Dumping structure for table document-management.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -193,8 +108,8 @@ REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 -- Dumping structure for table document-management.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -203,12 +118,12 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 
 -- Dumping structure for table document-management.personal_access_tokens
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -222,9 +137,9 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 
 -- Dumping structure for table document-management.product
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_kategori` bigint unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) NOT NULL,
+  `id_kategori` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -237,31 +152,11 @@ REPLACE INTO `product` (`id`, `nama`, `id_kategori`, `created_at`, `updated_at`)
 
 -- Dumping structure for table document-management.project
 CREATE TABLE IF NOT EXISTS `project` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `client_id` bigint unsigned NOT NULL,
-  `product_id` bigint unsigned NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `client_id` bigint(20) unsigned NOT NULL,
+  `product_id` bigint(20) unsigned NOT NULL,
   `start_project` date NOT NULL,
   `finish_project` date NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `product`
---
-
-INSERT INTO `product` (`id`, `name`, `id_kategori`, `created_at`, `updated_at`) VALUES
-(1, 'Solmit Academy', 3, '2023-01-18 00:29:32', '2023-01-18 00:29:32');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `project`
---
-
-CREATE TABLE `project` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `client_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -275,27 +170,32 @@ REPLACE INTO `project` (`id`, `client_id`, `product_id`, `start_project`, `finis
 
 -- Dumping structure for table document-management.projectdocuments
 CREATE TABLE IF NOT EXISTS `projectdocuments` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `project_id` bigint unsigned NOT NULL,
-  `document_id` bigint unsigned NOT NULL,
-  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `project_id` bigint(20) unsigned NOT NULL,
+  `document_id` bigint(20) unsigned NOT NULL,
+  `file` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table document-management.projectdocuments: ~0 rows (approximately)
+-- Dumping data for table document-management.projectdocuments: ~3 rows (approximately)
+REPLACE INTO `projectdocuments` (`id`, `project_id`, `document_id`, `file`, `created_at`, `updated_at`) VALUES
+	(1, 1, 1, 'documents/nrt8KRPxVen8gy6S77Brsetrz4lD0jZvQbkXaP28.pdf', '2023-05-21 21:39:22', '2023-05-21 21:39:22'),
+	(2, 1, 2, 'documents/W9lcaR4qaPClp92zWcXekcCwmYTfvVN6I43SUijB.pdf', '2023-05-21 21:40:38', '2023-05-21 21:40:38'),
+	(3, 1, 1, 'documents/hY0HMBzZ3wMFv7N0l4PZ0ytQY0tLQUPTux6zjLvm.pdf', '2023-05-21 21:41:11', '2023-05-21 21:41:11');
 
 -- Dumping structure for table document-management.users
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL,
+  `client_id` bigint(20) unsigned DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -303,10 +203,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table document-management.users: ~3 rows (approximately)
-REPLACE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `image`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$MU.sSLN8PpHtNWqBNc8Ufuf.MNMQPR5Rck1cWYmuJpKYMBk/pg2Du', NULL, 'admin', NULL, NULL, NULL),
-	(2, 'Client 1', 'client@gmail.com', NULL, '$2y$10$YX2/A15392WW0Za9xgRkl.8/PRxWbxObhHVQ9lZT6TCcr2wjnXhKG', 'images/CoqynSHyRJEmJotuxsrzRxgoDEYmuWLcTLSIdb6K.png', 'client', NULL, '2023-05-18 19:30:15', '2023-05-18 19:30:15'),
-	(3, 'Operator', 'operator@gmail.com', NULL, '$2y$10$h0Fe06zJwY1UV4kIJsAP5.aYHv6XrX/63zhMMmytaBrQpAfLpUJ3O', 'images/5ZlvpPeEZmBkcjhCRF3WJFSBtDOH2Tdbap114Fx6.jpg', 'operator', NULL, '2023-05-18 19:51:40', '2023-05-18 19:51:40');
+REPLACE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `image`, `role`, `client_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$v3O1s58IYm14fr42.cWvB./80GU2zGVLVs7ml1MsoJds4Oq9uEmky', NULL, 'admin', NULL, NULL, NULL, NULL),
+	(2, 'operator', 'operator@gmail.com', NULL, '$2y$10$gSENqclnatj0ug/gsdwPMO90mmjN0/ZwCLvCYsWkE1pSyL9Y.F7MC', NULL, 'operator', NULL, NULL, NULL, NULL),
+	(3, 'User Bank A', 'userbanka@gmail.com', NULL, '$2y$10$7Ro5/beDWDkgmP6F4k3Q6O5vPP73LIqjX83gt7GzcBT4l70.aovWu', NULL, 'client', 1, NULL, NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
