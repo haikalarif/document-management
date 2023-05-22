@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('role');
+            $table->foreignId('client_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

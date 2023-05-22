@@ -15,7 +15,14 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $project = Project::with('client', 'product', 'documents')->get();
+
+        $user = auth()->user();
+
+        if ($user->role === 'client') {
+            $project = Project::where('client_id', $user->client_id)->with('client', 'product', 'documents')->get();
+        } else {
+            $project = Project::with('client', 'product', 'documents')->get();
+        }
         // dd ($project->toArray());
         $filename = DB::table('projectdocuments')->where('file', 'value')->get();
 

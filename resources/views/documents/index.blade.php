@@ -47,21 +47,11 @@
                             @endcan
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Deskripsi</th>
-                            @can('admin')
-                                <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @php $no = 1; @endphp
                         @foreach ($documents as $data)
                             <tr>
-                                <td>{{ $no++ }}</td>
+                                <td style="width: 5%">{{ $no++ }}</td>
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->desc }}</td>
                                 @can('admin')

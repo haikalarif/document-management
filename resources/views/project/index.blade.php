@@ -55,19 +55,11 @@
                             @foreach ($documents as $item)
                                 <th>{{ $item->name }}</th>
                             @endforeach
-                            <th>Action</th>
+                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'operator')
+                                <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr class="text-center">
-                            <th>Client</th>
-                            <th>Products</th>
-                            @foreach ($documents as $item)
-                                <th>{{ $item->name }}</th>
-                            @endforeach
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @foreach ($project as $item)
                             @php
@@ -113,15 +105,17 @@
                                         </form>
                                     </td>
                                 @endforeach
-                                <td class="text-center" style="vertical-align: middle">
-                                    <form action="/projects/{{ $item->id }}" method="POST" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-circle btn-sm btn-danger" title="Hapus"
-                                            onclick="return confirm('Yakin Mau Di Hapus?')"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form>
-                                </td>
+                                @if (Auth::user()->role == 'admin' || Auth::user()->role == 'operator')
+                                    <td class="text-center" style="vertical-align: middle">
+                                        <form action="/projects/{{ $item->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-circle btn-sm btn-danger" title="Hapus"
+                                                onclick="return confirm('Yakin Mau Di Hapus?')"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

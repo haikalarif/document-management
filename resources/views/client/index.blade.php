@@ -39,29 +39,26 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama Perusahaan</th>
-                            <th>Kontak</th>
+                            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'operator')
+                                <th>Kontak</th>
+                            @endif
                             <th>Alamat</th>
                             @can('admin')
                                 <th class="text-center">Actions</th>
                             @endcan
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Nama Perusahaan</th>
-                            <th>Kontak</th>
-                            <th>Alamat</th>
-                            @can('admin')
-                                <th class="text-center">Actions</th>
-                            @endcan
-                        </tr>
-                    </tfoot>
                     <tbody>
+                        @php $no = 1; @endphp
                         @foreach ($client as $cli)
                             <tr>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $cli->name }}</td>
-                                <td>{{ $cli->contact }}</td>
+                                @if (Auth::user()->role === 'admin' || Auth::user()->role == 'operator')
+                                    <td>{{ $cli->contact }}</td>
+                                @endif
                                 <td>{{ $cli->address }}</td>
                                 @can('admin')
                                     <td class="text-center">

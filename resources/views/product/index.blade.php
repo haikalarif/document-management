@@ -47,16 +47,6 @@
                             @endcan
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Kategori</th>
-                            @can('admin')
-                                <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @php $no = 1; @endphp
                         @foreach ($product as $data)
