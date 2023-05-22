@@ -56,7 +56,7 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
 
-        return redirect('/user')->with('success','Data Baru Berhasil Ditambahkan!');
+        return redirect('/user')->with('success', 'Data Baru Berhasil Ditambahkan!');
     }
 
     /**
@@ -101,8 +101,8 @@ class UserController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        if($request->file('image')){
-            if($request->oldImage) {
+        if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('images');
@@ -124,6 +124,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect('/user')->with('success','Data Telah Berhasil Di Hapus!!');
+        return redirect('/user')->with('success', 'Data Telah Berhasil Di Hapus!!');
     }
 }

@@ -17,7 +17,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">
-                                Client</div>
+                                Clients</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_client->count() }}</div>
                         </div>
                         <div class="col-auto">
@@ -34,7 +34,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-sm font-weight-bold text-success text-uppercase mb-1">
-                                Product</div>
+                                Products</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_product->count() }}</div>
                         </div>
                         <div class="col-auto">
@@ -50,7 +50,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Project
+                            <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Projects
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_project->count() }}</div>
                         </div>
@@ -61,23 +61,41 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">Users
+        @if (Auth::user()->role == 'client')
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">Documents
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_doc->count() }}</div>
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_user->count() }}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-user fa-2x text-gray-300"></i>
+                            <div class="col-auto">
+                                <i class="fa-solid fa-file fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @else
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">Users
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jml_user->count() }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fa-solid fa-user fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="row">
@@ -95,13 +113,11 @@
                             src="{{ asset('temp') }}/img/undraw_profile.svg"> --}}
                         <i class="fa-brands fa-dochub fa-4x text-primary"></i>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste eveniet optio soluta impedit
-                        dolorum. Corporis impedit perspiciatis, voluptatem natus vel doloremque sequi praesentium
-                        quod a odit, quia ex illo officiis fugiat, animi vero rem est expedita tenetur eos ratione
-                        nulla nisi iure molestias? At fugiat reprehenderit temporibus. Vel, alias vitae.</p>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem voluptate
-                        itaque repudiandae rem enim deleniti, quae optio magnam dignissimos, molestias, inventore
-                        nam iusto iste sit. Maiores id inventore doloremque? Numquam?</p>
+                    <p>Sistem Manajemen Dokumen merupakan sebuah sistem komputer (atau seperangkat program komputer) yang
+                        digunakan untuk menelusuri dan menyimpan dokumen elektronik dan gambar pada dokumen.</p>
+                    <p class="mb-0">Sistem Manajemen Dokumen adalah sistem untuk menyederhanakan siklus pengelolaan
+                        dokumen perusahaan atau organisasi. Sebuah sistem manajemen file guna mendukung otomatisasi dan
+                        konsistensi organisasi dan seluruh dokumen kebijakan.</p>
                 </div>
             </div>
         </div>

@@ -41,6 +41,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Deskripsi</th>
                             @can('admin')
                                 <th>Actions</th>
                             @endcan
@@ -50,6 +51,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Deskripsi</th>
                             @can('admin')
                                 <th>Actions</th>
                             @endcan
@@ -61,6 +63,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data->name }}</td>
+                                <td>{{ $data->desc }}</td>
                                 @can('admin')
                                     <td>
                                         <a href="/documents/{{ $data->id }}/edit"

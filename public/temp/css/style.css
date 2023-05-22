@@ -23,3 +23,34 @@
 .btn-hijau:hover {
     background-color: #14865d;
 }
+
+.input-group.upload-file {
+    width: 6.25rem;
+    height: 1.875rem;
+}
+
+.input-group.upload-file .custom-file {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.input-group.upload-file .custom-file .custom-file-label {
+    max-width: 100%;
+    max-height: 100%;
+    font-size: 13px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.input-group.upload-file .input-group-append {
+    max-height: 100%;
+}
+
+.input-group.upload-file .input-group-append button {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.input-group.upload-file .input-group-append button i {
+    font-size: 14px;
+}

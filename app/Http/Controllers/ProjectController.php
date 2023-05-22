@@ -88,6 +88,6 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         Project::destroy($project->id);
-        return redirect('/projects')->with('message','Data Telah Berhasil Di Hapus!!');
+        return redirect('/projects')->with('message', 'Data Telah Berhasil Di Hapus!!');
     }
 }

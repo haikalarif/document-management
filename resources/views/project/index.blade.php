@@ -74,8 +74,8 @@
                                 $projectDocuments = $item->documents->pluck('pivot.file', 'id');
                             @endphp
                             <tr>
-                                <td>{{ $item->client->name }}</td>
-                                <td>{{ $item->product->nama }}</td>
+                                <td style="vertical-align: middle;">{{ $item->client->name }}</td>
+                                <td style="vertical-align: middle;">{{ $item->product->nama }}</td>
                                 @foreach ($documents as $doc)
                                     @php
                                         $ownDocument = $projectDocuments[$doc->id] ?? null;
@@ -84,8 +84,9 @@
                                         @if (empty($ownDocument))
                                             <p><i class="fas fa-file-excel text-secondary" style="font-size: 20px"></i></p>
                                         @else
-                                            <a href="{{ asset('storage/' . $ownDocument) }}"
-                                                target="_blank"><i class="fas fa-file-download text-primary" style="font-size: 20px"></i></a>
+                                            <a href="{{ asset('storage/' . $ownDocument) }}" target="_blank"><i
+                                                    class="fas fa-file-download text-primary"
+                                                    style="font-size: 20px"></i></a>
                                         @endif
                                         <form action="{{ route('projects.upload') }}" method="POST"
                                             enctype="multipart/form-data">
@@ -93,26 +94,26 @@
                                             <input type="hidden" name="project_id" value="{{ $item->id }}">
                                             <input type="hidden" name="document_id" value="{{ $doc->id }}">
                                             <div class="mt-3">
-                                                @can ('admin')
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input"
-                                                            id="inputGroupFile04 file" name="file">
-                                                        <label class="custom-file-label" for="inputGroupFile04">Choose
-                                                            File</label>
+                                                @can('admin')
+                                                    <div class="row input-group upload-file mx-auto">
+                                                        <div class="col-5 custom-file">
+                                                            <input type="file" class="custom-file-input"
+                                                                id="inputGroupFile04 file" name="file" required>
+                                                            <label class="custom-file-label" for="inputGroupFile04">Choose
+                                                                File</label>
+                                                        </div>
+                                                        <div class="col-7 px-0 input-group-append">
+                                                            <button class="btn btn-success btn-block" type="submit"
+                                                                id="inputGroupFileAddon04">
+                                                                <i class="fa-solid fa-upload"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-success" type="submit"
-                                                            id="inputGroupFileAddon04">
-                                                            <i class="fa-solid fa-upload"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
                                                 @endcan
                                         </form>
                                     </td>
                                 @endforeach
-                                <td class="text-center">
+                                <td class="text-center" style="vertical-align: middle">
                                     <form action="/projects/{{ $item->id }}" method="POST" class="d-inline">
                                         @method('delete')
                                         @csrf
@@ -130,54 +131,54 @@
     </div>
 
     <!-- Modal Tambah Project -->
-    @can ('admin')
-    <div class="modal fade" id="tambahProject" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('projects.store') }}" method="POST">
-                        @csrf
-                        <div class="from-group mb-3">
-                            <label for="client_id" class="form-label">Client</label>
-                            <select name="client_id" id="client_id" class="form-control">
-                                <option value="" selected hidden>Pilih Client</option>
-                                @foreach ($client as $item)
-                                    <option value={{ $item->id }}>{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="from-group mb-3">
-                            <label for="product_id" class="form-label">Product</label>
-                            <select name="product_id" id="product_id" class="form-control">
-                                <option value="" selected hidden>Pilih Product</option>
-                                @foreach ($product as $data)
-                                    <option value={{ $data->id }}>{{ $data->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="from-group mb-3">
-                            <label for="start_project" class="form-label">Tanggal Awal</label>
-                            <input type="date" class="form-control @error('start_project') is-invalid @enderror"
-                                id="start_project" name="start_project" placeholder="Masukkan Kontak Perusahaan...">
-                        </div>
-                        <div class="from-group mb-3">
-                            <label for="finish_project" class="form-label">Tanggal Akhir</label>
-                            <input type="date" class="form-control @error('finish_project') is-invalid @enderror"
-                                id="finish_project" name="finish_project" placeholder="Masukkan Kontak Perusahaan...">
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Simpan</button>
-                    </form>
+    @can('admin')
+        <div class="modal fade" id="tambahProject" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Project</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('projects.store') }}" method="POST">
+                            @csrf
+                            <div class="from-group mb-3">
+                                <label for="client_id" class="form-label">Client</label>
+                                <select name="client_id" id="client_id" class="form-control">
+                                    <option value="" selected hidden>Pilih Client</option>
+                                    @foreach ($client as $item)
+                                        <option value={{ $item->id }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="from-group mb-3">
+                                <label for="product_id" class="form-label">Product</label>
+                                <select name="product_id" id="product_id" class="form-control">
+                                    <option value="" selected hidden>Pilih Product</option>
+                                    @foreach ($product as $data)
+                                        <option value={{ $data->id }}>{{ $data->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="from-group mb-3">
+                                <label for="start_project" class="form-label">Tanggal Awal</label>
+                                <input type="date" class="form-control @error('start_project') is-invalid @enderror"
+                                    id="start_project" name="start_project" placeholder="Masukkan Kontak Perusahaan...">
+                            </div>
+                            <div class="from-group mb-3">
+                                <label for="finish_project" class="form-label">Tanggal Akhir</label>
+                                <input type="date" class="form-control @error('finish_project') is-invalid @enderror"
+                                    id="finish_project" name="finish_project" placeholder="Masukkan Kontak Perusahaan...">
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endcan
 @endsection

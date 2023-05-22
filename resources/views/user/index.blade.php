@@ -33,7 +33,40 @@
                     <span class="text">Tambah Users</span>
                 </a>
             </div>
-            <div class="table-responsive">
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach ($users as $usr)
+                        <div class="col-lg-4">
+                            <div class="card">
+                                @if ($usr->image)
+                                    <img src="{{ asset('storage/' . $usr->image) }}" class="card-img-top img-fluid p-2"
+                                        alt="Image User" style="height: 180px; border-radius: 10px;">
+                                @else
+                                    <img src="{{ asset('temp') }}/img/undraw_profile.svg" class="card-img-top img-fluid p-2"
+                                        alt="Image User" style="height: 180px; border-radius: 10px;">
+                                @endif
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">{{ ucfirst($usr->name) }}</h4>
+                                    <p class="card-text"><strong>Email &nbsp;: </strong> {{ $usr->email }}</p>
+                                    <p><strong>Role &nbsp;&nbsp;&nbsp;:</strong> {{ ucfirst($usr->role) }}</p>
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <a href="/user/{{ $usr->id }}/edit" class="btn btn-warning mr-2"><i
+                                                class="fa fa-edit"></i> Edit</a>
+                                        <form action="/user/{{ $usr->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger"
+                                                onclick="return confirm('Yakin Mau Di Hapus?')"><i class="fa fa-trash"></i>
+                                                Hapus</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            {{-- <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -73,8 +106,8 @@
                                 <td>{{ $usr->email }}</td>
                                 <td>{{ ucfirst($usr->role) }}</td>
                                 <td class="text-center">
-                                    {{-- <a href="/user/{{ $usr->id }}" class="btn btn-circle btn-sm btn-primary"><i
-                                            class="fa fa-eye"></i></a> --}}
+                                    <a href="/user/{{ $usr->id }}" class="btn btn-circle btn-sm btn-primary"><i
+                                            class="fa fa-eye"></i></a>
                                     <a href="/user/{{ $usr->id }}/edit" class="btn btn-circle btn-sm btn-warning"><i
                                             class="fa fa-edit"></i></a>
                                     <form action="/user/{{ $usr->id }}" method="POST" class="d-inline">
@@ -89,7 +122,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

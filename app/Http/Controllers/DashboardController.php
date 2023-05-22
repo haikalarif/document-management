@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Documents;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
@@ -17,7 +18,7 @@ class DashboardController extends Controller
             'jml_product' => Product::all(),
             'jml_project' => Project::all(),
             'jml_user' => User::all(),
+            'jml_doc' => Documents::all(),
         ]);
     }
-
 }
