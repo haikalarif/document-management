@@ -108,7 +108,7 @@
                     <h6 class="m-0 font-weight-bold text-primary text-center">Document Management</h6>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex justify-content-center align-items-center rotate-n-15 mb-3">
+                    <div class="d-flex justify-content-center align-items-center rotate-n-15 mb-4">
                         {{-- <img class="img-profile rounded-circle justify-content-center" width="10%"
                             src="{{ asset('temp') }}/img/undraw_profile.svg"> --}}
                         <i class="fa-brands fa-dochub fa-4x text-primary"></i>
@@ -118,6 +118,19 @@
                     <p class="mb-0">Sistem Manajemen Dokumen adalah sistem untuk menyederhanakan siklus pengelolaan
                         dokumen perusahaan atau organisasi. Sebuah sistem manajemen file guna mendukung otomatisasi dan
                         konsistensi organisasi dan seluruh dokumen kebijakan.</p>
+                    <p align="justify">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Document Management merupakan sebuah solusi program software yang dirancang secara khusus dengan
+                        tujuan untuk mengorganisir, mengamankan, menangkap, mendigitalisasi, menandai, menyetujui, dan
+                        menyelesaikan tugas pada file-file bisnis.
+                    </p>
+                    <p align="justify" class="mb-0">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Aplikasi ini digunakan untuk menangkap dan mengorganisir segala jenis dokumen ke dalam
+                        bentuk elektronik yang mudah ditemukan dan diambil ketika dibutuhkan. Dalam kasus ini, dokumen
+                        didefinisikan sebagai segala jenis objek atau informasi yang direkam dan dipandang sebagai sebuah
+                        unit data.
+                    </p>
                 </div>
             </div>
         </div>
