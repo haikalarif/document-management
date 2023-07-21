@@ -13,7 +13,7 @@ class Documents extends Model
 
     protected $fillable = [
         'name',
-        'desc'
+        'deskripsi'
     ];
 
     public function project()

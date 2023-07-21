@@ -25,8 +25,15 @@ class DocumentsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'desc' => 'required|max:255',
+            'deskripsi' => 'required|max:255',
         ]);
+
+        $existingDocument = Documents::where('name', $request->name)
+            ->where('deskripsi', $request->deskripsi)
+            ->first();
+        if ($existingDocument) {
+            return redirect()->route('documents.index')->with('error', 'Document sudah ada!');
+        }
 
         $documents = Documents::create($validatedData);
         if ($documents) {
@@ -48,12 +55,12 @@ class DocumentsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'desc' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         $documents = Documents::findOrFail($id);
         $documents->name = $request->name;
-        $documents->desc = $request->desc;
+        $documents->deskripsi = $request->deskripsi;
         $documents->save();
         return redirect()->route('documents.index')
             ->with('success', 'Dokumen berhasil diupdate!');

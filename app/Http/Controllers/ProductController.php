@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $product = Product::all();
         return view('product.index', compact('product'));
     }
 
-    public function create() {
+    public function create()
+    {
         $kategori = Kategori::all();
         return view('product.tambah', compact('kategori'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'nama' => 'required',
             'kategori' => 'required',
@@ -26,12 +30,18 @@ class ProductController extends Controller
             'kategori.required' => 'Kategori tidak boleh kosong'
         ]);
 
+        // Check if the product already exists with the provided name
+        $existingProduct = Product::where('nama', $request->nama)->first();
+        if ($existingProduct) {
+            return redirect()->route('products.index')->with('error', 'Produk sudah ada!');
+        }
+
         $product = new Product();
         $product->nama = $request->nama;
         $product->id_kategori = $request->kategori;
         $product->save();
-        return redirect()->route('products.index')
-            ->with('success', 'Produk berhasil dibuat!');
+
+        return redirect()->route('products.index')->with('success', 'Produk berhasil dibuat!');
     }
 
     public function edit($id)
@@ -41,7 +51,8 @@ class ProductController extends Controller
         return view('product.edit', compact('product', 'kategori'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'nama' => 'required',
             'kategori' => 'required',

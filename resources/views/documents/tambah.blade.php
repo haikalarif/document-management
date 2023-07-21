@@ -33,8 +33,8 @@
             @enderror
             <div class="from-group mb-3">
                 <label for="desc" class="form-label">Deskripsi</label>
-                <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc" name="desc"
-                    placeholder="Masukkan Deskripsi Document..." required>
+                <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc"
+                    name="deskripsi" placeholder="Masukkan Deskripsi Document..." required>
             </div>
             @error('desc')
                 <div class="invalid-feedback">

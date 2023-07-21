@@ -44,12 +44,17 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'password' => 'required|min:5|max:255',
             'image' => 'image|file|mimes:jpg,png,jpeg,gif,svg',
             'role' => '',
             'client_id' => ''
         ]);
+
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser) {
+            return redirect()->route('user.index')->with('error', 'User sudah ada!');
+        }
 
         $user = new User();
         $user->name = $request->name;
@@ -83,9 +88,12 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit', compact(
-            'user'
-        ));
+        return view(
+            'user.edit',
+            compact(
+                'user'
+            )
+        );
     }
 
     /**

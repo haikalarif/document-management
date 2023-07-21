@@ -18,6 +18,16 @@
             {{ session('success') }}
         </div>
     @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible col-lg-12" role='alert'>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{-- <button type="button" class="close" data-disniss="alert" aria-hidden="true">&times;</button> --}}
+            <h5><i class="icon fa fa-check-square"></i> Gagal!!!</h5>
+            {{ session('error') }}
+        </div>
+    @endif
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -53,7 +63,7 @@
                             <tr>
                                 <td style="width: 5%">{{ $no++ }}</td>
                                 <td>{{ $data->name }}</td>
-                                <td>{{ $data->desc }}</td>
+                                <td>{{ $data->deskripsi }}</td>
                                 @can('admin')
                                     <td>
                                         <a href="/documents/{{ $data->id }}/edit"

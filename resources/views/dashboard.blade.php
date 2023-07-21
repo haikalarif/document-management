@@ -115,15 +115,6 @@
                     </div>
                     <p>Sistem Manajemen Dokumen merupakan sebuah sistem komputer (atau seperangkat program komputer) yang
                         digunakan untuk menelusuri dan menyimpan dokumen elektronik dan gambar pada dokumen.</p>
-                    <p class="mb-0">Sistem Manajemen Dokumen adalah sistem untuk menyederhanakan siklus pengelolaan
-                        dokumen perusahaan atau organisasi. Sebuah sistem manajemen file guna mendukung otomatisasi dan
-                        konsistensi organisasi dan seluruh dokumen kebijakan.</p>
-                    <p align="justify">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Document Management merupakan sebuah solusi program software yang dirancang secara khusus dengan
-                        tujuan untuk mengorganisir, mengamankan, menangkap, mendigitalisasi, menandai, menyetujui, dan
-                        menyelesaikan tugas pada file-file bisnis.
-                    </p>
                     <p align="justify" class="mb-0">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Aplikasi ini digunakan untuk menangkap dan mengorganisir segala jenis dokumen ke dalam

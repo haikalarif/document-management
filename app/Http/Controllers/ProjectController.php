@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Project;
@@ -52,15 +53,24 @@ class ProjectController extends Controller
             'finish_project' => '',
         ]);
 
+        // Check if the combination of client_id and product_id already exists
+        $existingProject = Project::where('client_id', $request->client_id)
+            ->where('product_id', $request->product_id)
+            ->first();
+
+        if ($existingProject) {
+            return redirect()->route('projects.index')->with('error', 'Klien dengan produk tersebut sudah terisi!');
+        }
+
         $project = Project::create($validated);
+
         if ($project) {
             $message = 'Project berhasil dibuat!';
         } else {
             $message = 'Project gagal dibuat!';
         }
 
-        return redirect()->route('projects.index')
-            ->with('success', $message);
+        return redirect()->route('projects.index')->with('success', $message);
     }
 
     public function upload(Request $request)
